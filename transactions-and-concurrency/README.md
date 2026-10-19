@@ -2,7 +2,7 @@
 
 A language- and framework-independent course for Nithin. Read one lesson at a time. Examples use small numbers and explain the problem before the solution.
 
-This folder preserves the material taught in our conversation: transaction foundations, boundaries, autocommit, every ACID property, six concurrency anomalies, four isolation levels, and the WAL lesson. It also expands **all ten durability techniques** into individual lessons.
+This folder preserves the material taught in our conversation: transaction foundations, boundaries, autocommit, every ACID property, six concurrency anomalies, four isolation levels, and the WAL lesson. It also expands **all ten durability techniques** into individual lessons. Phase 06 explains on-disk table/index storage and the complete row-fetch path into memory, with visual diagrams and an optional PostgreSQL lab.
 
 The original 19-part SDE1 roadmap is preserved in [ROADMAP.md](ROADMAP.md). Roadmap topics beyond the lessons below remain future study; a roadmap entry is not presented as an already completed lesson.
 
@@ -15,6 +15,7 @@ The original 19-part SDE1 roadmap is preserved in [ROADMAP.md](ROADMAP.md). Road
 | [03 — Read phenomena and write anomalies](phase-03-concurrency-anomalies/README.md) | Dirty read, non-repeatable read, phantom read, read skew, lost update, write skew |
 | [04 — Isolation levels](phase-04-isolation-levels/README.md) | Read Uncommitted, Read Committed, Repeatable Read, Serializable, retries |
 | [05 — Durability techniques](phase-05-durability/README.md) | Ten complete lessons from WAL to backups and point-in-time recovery |
+| [06 — Storage and row fetching](phase-06-storage-and-row-fetching/README.md) | Files, pages, B+ trees, buffer cache, heap/clustered storage, query walkthroughs, diagrams, PostgreSQL lab |
 
 ## Important conventions
 
