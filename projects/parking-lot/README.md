@@ -48,5 +48,6 @@ Patterns are introduced only when a concrete problem appears.
 24. Database schema design
 25. Query design + performance
 26. Caching + Redis
+27. Background Jobs + Celery
 
-Remaining phases continue from Phase 27.
+Remaining phases continue from Phase 28.
