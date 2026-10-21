@@ -49,5 +49,6 @@ Patterns are introduced only when a concrete problem appears.
 25. Query design + performance
 26. Caching + Redis
 27. Background Jobs + Celery
+28. Observability
 
-Remaining phases continue from Phase 28.
+Remaining phases continue from Phase 29.
