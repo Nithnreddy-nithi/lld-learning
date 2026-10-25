@@ -4,10 +4,17 @@ This project develops a notification system incrementally. The emphasis is not o
 
 ## Current scope
 
-Phase 1 establishes what the system must do before classes, databases, queues, providers, or design patterns are selected.
+Phase 1 establishes what the system must do. Phase 2 turns that behavior into a small object model with clear ownership, responsibilities, and dependency boundaries.
 
 - [Concept 1 — Requirement clarification](phase-01/01-requirement-clarification.md)
 - [Concept 2 — Functional requirements and use cases](phase-01/02-functional-requirements.md)
+
+### Phase 2 — Object modeling
+
+- [Concept 1 — Identify core objects](phase-02/01-core-objects.md)
+- [Concept 2 — Relationships and ownership](phase-02/02-relationships-and-ownership.md)
+- [Concept 3 — Responsibilities and method placement](phase-02/03-responsibilities-and-method-placement.md)
+- [Concept 4 — Interfaces, orchestration, and composition](phase-02/04-interfaces-orchestration-and-composition.md)
 
 ## Confirmed Phase 1 decisions
 
@@ -26,7 +33,11 @@ These are learning-scope decisions, not claims that every production system must
 |---|---|---:|---|
 | 1 | 1. Clarify the problem and scope | Complete | [Notes, examples, diagrams, and exercises](phase-01/01-requirement-clarification.md) |
 | 1 | 2. Derive functional requirements and use cases | Complete | [Requirements, flows, examples, and exercises](phase-01/02-functional-requirements.md) |
-| 2+ | Object model, patterns, persistence, async delivery, reliability, and APIs | Not started | To be documented when each phase is completed |
+| 2 | 1. Identify core objects | Complete | [Entities, values, services, and enums](phase-02/01-core-objects.md) |
+| 2 | 2. Define relationships and ownership | Complete | [Lifecycle ownership and references](phase-02/02-relationships-and-ownership.md) |
+| 2 | 3. Place responsibilities and methods | Complete | [Cohesive behavior and state transitions](phase-02/03-responsibilities-and-method-placement.md) |
+| 2 | 4. Define interfaces and compose the workflow | Complete | [Ports, orchestration, test doubles, and composition](phase-02/04-interfaces-orchestration-and-composition.md) |
+| 3+ | Patterns, persistence, asynchronous delivery, reliability, and APIs | Not started | To be documented when each phase is completed |
 
 ## Phase 1 outcome
 
@@ -35,5 +46,9 @@ By the end of these two concepts, we can state the core contract in one sentence
 > Accept a notification request that names a template, supplies its data, selects one or more channels, and targets one or more recipients; validate it, render channel-appropriate content, attempt each recipient-channel delivery, and return or record the result of every attempt.
 
 Phase 1 deliberately does **not** settle implementation choices such as Celery versus another worker, a particular database schema, or a vendor SDK. Those choices should follow the requirements instead of silently becoming requirements themselves.
+
+## Phase 2 outcome
+
+Phase 2 separates one business request from its many recipient-channel delivery attempts. Domain objects protect their own invariants, focused services render and send content, and repository/sender protocols keep the use case independent of infrastructure choices.
 
 
