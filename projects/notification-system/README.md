@@ -16,6 +16,13 @@ Phase 1 establishes what the system must do. Phase 2 turns that behavior into a 
 - [Concept 3 — Responsibilities and method placement](phase-02/03-responsibilities-and-method-placement.md)
 - [Concept 4 — Interfaces, orchestration, and composition](phase-02/04-interfaces-orchestration-and-composition.md)
 
+### Phase 3 — Design patterns
+
+- [Concept 1 — Strategy for channel behavior](phase-03/01-strategy-pattern.md)
+- [Concept 2 — Factory for sender selection](phase-03/02-factory-pattern.md)
+- [Concept 3 — Adapter for provider integration](phase-03/03-adapter-pattern.md)
+- [Concept 4 — Observer through domain events](phase-03/04-observer-and-domain-events.md)
+
 ## Confirmed Phase 1 decisions
 
 | Question | Decision | Design consequence |
@@ -37,7 +44,11 @@ These are learning-scope decisions, not claims that every production system must
 | 2 | 2. Define relationships and ownership | Complete | [Lifecycle ownership and references](phase-02/02-relationships-and-ownership.md) |
 | 2 | 3. Place responsibilities and methods | Complete | [Cohesive behavior and state transitions](phase-02/03-responsibilities-and-method-placement.md) |
 | 2 | 4. Define interfaces and compose the workflow | Complete | [Ports, orchestration, test doubles, and composition](phase-02/04-interfaces-orchestration-and-composition.md) |
-| 3+ | Patterns, persistence, asynchronous delivery, reliability, and APIs | Not started | To be documented when each phase is completed |
+| 3 | 1. Apply Strategy to channel delivery | Complete | [Interchangeable sender behavior](phase-03/01-strategy-pattern.md) |
+| 3 | 2. Apply Factory to sender selection | Complete | [Centralized strategy selection](phase-03/02-factory-pattern.md) |
+| 3 | 3. Apply Adapter to provider APIs | Complete | [Vendor-neutral integration boundary](phase-03/03-adapter-pattern.md) |
+| 3 | 4. Publish delivery domain events | Complete | [Observer, handlers, and event boundaries](phase-03/04-observer-and-domain-events.md) |
+| 4+ | Persistence, asynchronous delivery, reliability, and APIs | Not started | To be documented when each phase is completed |
 
 ## Phase 1 outcome
 
@@ -50,5 +61,9 @@ Phase 1 deliberately does **not** settle implementation choices such as Celery v
 ## Phase 2 outcome
 
 Phase 2 separates one business request from its many recipient-channel delivery attempts. Domain objects protect their own invariants, focused services render and send content, and repository/sender protocols keep the use case independent of infrastructure choices.
+
+## Phase 3 outcome
+
+Phase 3 applies patterns only where behavior genuinely varies: Strategy encapsulates channel delivery, Factory selects a configured strategy, Adapter contains vendor-specific translation, and domain events notify independent observers after important delivery transitions.
 
 
