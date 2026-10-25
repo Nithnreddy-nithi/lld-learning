@@ -23,6 +23,13 @@ Phase 1 establishes what the system must do. Phase 2 turns that behavior into a 
 - [Concept 3 — Adapter for provider integration](phase-03/03-adapter-pattern.md)
 - [Concept 4 — Observer through domain events](phase-03/04-observer-and-domain-events.md)
 
+### Phase 4 — Persistence and transaction boundaries
+
+- [Concept 1 — Relational schema](phase-04/01-database-schema.md)
+- [Concept 2 — Repository pattern](phase-04/02-repository-pattern.md)
+- [Concept 3 — Transactions and Unit of Work](phase-04/03-transactions-and-unit-of-work.md)
+- [Concept 4 — Transactional outbox](phase-04/04-transactional-outbox.md)
+
 ## Confirmed Phase 1 decisions
 
 | Question | Decision | Design consequence |
@@ -48,7 +55,11 @@ These are learning-scope decisions, not claims that every production system must
 | 3 | 2. Apply Factory to sender selection | Complete | [Centralized strategy selection](phase-03/02-factory-pattern.md) |
 | 3 | 3. Apply Adapter to provider APIs | Complete | [Vendor-neutral integration boundary](phase-03/03-adapter-pattern.md) |
 | 3 | 4. Publish delivery domain events | Complete | [Observer, handlers, and event boundaries](phase-03/04-observer-and-domain-events.md) |
-| 4+ | Persistence, asynchronous delivery, reliability, and APIs | Not started | To be documented when each phase is completed |
+| 4 | 1. Design the relational schema | Complete | [Tables, constraints, versioning, and indexes](phase-04/01-database-schema.md) |
+| 4 | 2. Map storage through repositories | Complete | [Repository contracts and row mapping](phase-04/02-repository-pattern.md) |
+| 4 | 3. Define transaction boundaries | Complete | [Unit of Work and concurrency](phase-04/03-transactions-and-unit-of-work.md) |
+| 4 | 4. Publish events reliably | Complete | [Transactional outbox and relay](phase-04/04-transactional-outbox.md) |
+| 5+ | Asynchronous delivery, reliability, observability, and APIs | Not started | To be documented when each phase is completed |
 
 ## Phase 1 outcome
 
@@ -65,5 +76,9 @@ Phase 2 separates one business request from its many recipient-channel delivery 
 ## Phase 3 outcome
 
 Phase 3 applies patterns only where behavior genuinely varies: Strategy encapsulates channel delivery, Factory selects a configured strategy, Adapter contains vendor-specific translation, and domain events notify independent observers after important delivery transitions.
+
+## Phase 4 outcome
+
+Phase 4 stores requests, versioned templates and delivery attempts without losing their lifecycle distinctions. Repositories map domain objects to storage, a Unit of Work protects related local changes, and an outbox makes committed events recoverable for asynchronous publication.
 
 
